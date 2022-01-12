@@ -143,7 +143,7 @@ void process_line() {
     case 'F': F = Serial.parseFloat(); F=min(50,F); Serial.print(F); Serial.println(" N"); break;  // max 50 N force
     case 'M': delay(20); while(Serial.available()>0) Serial.read(); push_test_manual(F,L); break;
   }
-  if(Serial.available()>0) while (Serial.read() != 10); // dump extra characters till LF is seen (you can use CRLF or just LF)
+  if(Serial.available()>0) while (Serial.read() != 10 && Serial.available()>0); // dump extra characters till LF is seen (you can use CRLF or just LF)
 }
 
 void loop() {
